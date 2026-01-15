@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import { BarChart3, FileText, Shield, CreditCard, Package, Receipt, TrendingUp, Users } from 'lucide-react';
+import React from 'react';
+
+type FeatureKey = 'Accounting' | 'Invoicing' | 'Compliance' | 'Payments' | 'Inventory' | 'Expenses' | 'Sales' | 'Vendors';
+
+interface Feature {
+    title: string;
+    description: string;
+    icon: React.ReactElement;
+    color: string;
+}
 
 const BusinessPage = () => {
-    const [activeTab, setActiveTab] = useState('Accounting');
+    const [activeTab, setActiveTab] = useState<FeatureKey>('Accounting');
 
-    const features = {
+    const features: Record<FeatureKey, Feature> = {
         Accounting: {
             title: 'Accounting',
             description: 'Automatically update your books when you make a sale or record a purchase, generate financial reports, automate bank reconciliation, access audit trails, create E-invoices & E-way Bills, generate GSTR-1 & GSTR-2B Reports, and automate GSTR-2B reconciliation.',
@@ -79,7 +89,7 @@ const BusinessPage = () => {
 
                 {/* Navigation Tabs */}
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    {Object.keys(features).map((tab) => (
+                    {(Object.keys(features) as FeatureKey[]).map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}

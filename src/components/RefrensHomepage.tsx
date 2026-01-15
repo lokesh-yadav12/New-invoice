@@ -9,9 +9,9 @@ const RefrensHomepage = () => {
     const [displayText, setDisplayText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [textIndex, setTextIndex] = useState(0);
-    const productsDropdownRef = useRef(null);
-    const countryDropdownRef = useRef(null);
-    const pricingDropdownRef = useRef(null);
+    const productsDropdownRef = useRef<HTMLDivElement>(null);
+    const countryDropdownRef = useRef<HTMLDivElement>(null);
+    const pricingDropdownRef = useRef<HTMLDivElement>(null);
 
     const texts = [
         'Create All kind of Invoices for free',
@@ -46,14 +46,14 @@ const RefrensHomepage = () => {
 
     // Handle click outside to close dropdowns
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (productsDropdownRef.current && !productsDropdownRef.current.contains(event.target)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (productsDropdownRef.current && !productsDropdownRef.current.contains(event.target as Node)) {
                 setShowProductsDropdown(false);
             }
-            if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target)) {
+            if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
                 setShowCountryDropdown(false);
             }
-            if (pricingDropdownRef.current && !pricingDropdownRef.current.contains(event.target)) {
+            if (pricingDropdownRef.current && !pricingDropdownRef.current.contains(event.target as Node)) {
                 setShowPricingDropdown(false);
             }
         };

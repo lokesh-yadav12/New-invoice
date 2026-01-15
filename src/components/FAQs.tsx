@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown, Search, HelpCircle, FileText, DollarSign, Users, Settings, Zap, Clock } from 'lucide-react';
 
 const FAQs = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('getting-started');
 
   const categories = [
-    // { id: 'all', name: 'All Questions', icon: HelpCircle },
     { id: 'getting-started', name: 'Getting Started', icon: Zap },
     { id: 'creating', name: 'Creating Invoices', icon: FileText },
     { id: 'payment', name: 'Payments & Pricing', icon: DollarSign },
@@ -164,7 +163,7 @@ const FAQs = () => {
     }
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
